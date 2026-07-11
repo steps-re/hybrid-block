@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hybrid Block — Training Plan</title>
+<meta name="description" content="A weekly hybrid-athlete plan: clean & jerk for power, snatch as skill work, cycling for the engine, light physique work — one hour a day.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%8F%8B%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>html,body{margin:0;padding:0;background:#F4F4F0;}</style>
+</head>
+<body>
+<style>
+  :root {
+    --paper:   #F4F4F0;
+    --card:    #FFFFFF;
+    --ink:     #17191E;
+    --ink-2:   #565A62;
+    --ink-3:   #878A90;
+    --line:    #E3E2DB;
+    --line-2:  #ECEBE4;
+    --accent:  #E24E1B;
+    --accent-d:#B23A12;
+    /* training-dial semantics (separate from accent) */
+    --easy-bg:#E4EFE7; --easy-fg:#2C6E49;
+    --thr-bg: #F4E9D0; --thr-fg: #9A6B12;
+    --pow-bg: #F3DCD6; --pow-fg: #B23A22;
+    --str-bg: #DEE6EE; --str-fg: #2E4C6B;
+    --rest-bg:#E7E7E4; --rest-fg:#63676E;
+    --mono: "SF Mono", "JetBrains Mono", ui-monospace, "Menlo", "Consolas", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  .doc {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(20px, 5vw, 72px) clamp(18px, 5vw, 56px) 80px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .doc p { margin: 0 0 0.9em; max-width: 68ch; color: #24272D; }
+  .doc strong { font-weight: 650; color: var(--ink); }
+  .doc em { font-style: italic; }
+
+  /* ---------- masthead ---------- */
+  .mast { border-bottom: 2px solid var(--ink); padding-bottom: 22px; margin-bottom: 40px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent-d); margin: 0 0 14px; font-weight: 600;
+  }
+  .doc h1 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(2.1rem, 5.4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 16px;
+  }
+  .lede { font-size: clamp(1rem, 2.2vw, 1.18rem); color: var(--ink-2); max-width: 60ch; margin: 0; }
+  .lede b { color: var(--ink); font-weight: 650; }
+
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 10px 34px;
+    margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-family: var(--mono);
+  }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat .k { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+  .stat .v { font-size: 15px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 56px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; }
+  .sec-idx { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.08em; }
+  .doc h2 {
+    font-weight: 800; font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+    letter-spacing: -0.015em; text-transform: uppercase; margin: 0; line-height: 1.05;
+    text-wrap: balance;
+  }
+  .sec-sub { color: var(--ink-2); max-width: 66ch; margin: -6px 0 4px; }
+
+  /* ---------- logic grid ---------- */
+  .logic { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .logic .cell {
+    background: var(--card); border: 1px solid var(--line); border-radius: 3px;
+    padding: 18px 18px 16px; border-top: 3px solid var(--accent);
+  }
+  .logic .cell h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+  .logic .cell p { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+  /* ---------- week grid ---------- */
+  .week { display: grid; grid-template-columns: repeat(auto-fill, minmax(288px, 1fr)); gap: 14px; }
+  .day {
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+    padding: 16px 17px 18px; display: flex; flex-direction: column;
+  }
+  .day-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 3px; }
+  .day-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+  .day h3 { margin: 4px 0 12px; font-size: 1.12rem; font-weight: 750; letter-spacing: -0.015em; line-height: 1.12; }
+  .work { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .work li { font-size: 14.5px; line-height: 1.42; color: #2C2F35; padding-left: 15px; position: relative; }
+  .work li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+  .work li .m { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .note { margin-top: auto; padding-top: 12px; font-size: 12.5px; color: var(--ink-3); font-style: italic; }
+
+  /* dial pills */
+  .dial { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 9px; border-radius: 2px; white-space: nowrap; }
+  .d-easy { background: var(--easy-bg); color: var(--easy-fg); }
+  .d-thr  { background: var(--thr-bg);  color: var(--thr-fg); }
+  .d-pow  { background: var(--pow-bg);  color: var(--pow-fg); }
+  .d-str  { background: var(--str-bg);  color: var(--str-fg); }
+  .d-rest { background: var(--rest-bg); color: var(--rest-fg); }
+
+  /* legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 20px; }
+
+  /* ---------- tables ---------- */
+  .twrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; }
+  thead th {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink-3); text-align: left; font-weight: 600;
+    padding: 12px 16px; border-bottom: 1.5px solid var(--line); background: #FBFBF8;
+  }
+  tbody td { padding: 12px 16px; border-bottom: 1px solid var(--line-2); font-size: 14.5px; vertical-align: top; line-height: 1.4; }
+  tbody tr:last-child td { border-bottom: none; }
+  td .st { font-weight: 650; }
+  td .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 13px; }
+  td .lever { color: var(--accent-d); font-weight: 600; }
+
+  /* ---------- two-col ---------- */
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 20px 20px 18px; }
+  .panel h3 { margin: 0 0 10px; font-size: 1.08rem; font-weight: 750; letter-spacing: -0.01em; }
+  .panel p { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+  .panel p:last-child { margin-bottom: 0; }
+  .panel ul { margin: 0; padding-left: 18px; }
+  .panel li { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 5px; }
+
+  /* fuel strip */
+  .fuel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--card); }
+  .fuel .f { padding: 18px 20px; border-right: 1px solid var(--line-2); }
+  .fuel .f:last-child { border-right: none; }
+  .fuel .fk { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-d); margin-bottom: 8px; font-weight: 600; }
+  .fuel .fv { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+  .fuel .fv b { color: var(--ink); font-weight: 650; }
+
+  /* footer */
+  .foot { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+  .foot b { color: var(--ink-2); }
+
+  a { color: var(--accent-d); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 560px) {
+    .doc { font-size: 16px; }
+    .stats { gap: 10px 22px; }
+  }
+</style>
+
+<div class="doc">
+
+  <header class="mast">
+    <p class="eyebrow">Hybrid Programming · Built for Mike</p>
+    <h1>The Hybrid Block</h1>
+    <p class="lede">A week built on the <b>Olympic lifts</b> for raw power, your <b>bike</b> for the engine, and a <b>touch of physique</b> on top — none of them cannibalizing the others. The organizing rule: the barbell speed comes first, so everything else is arranged to keep your legs and nervous system fresh for it.</p>
+    <div class="stats">
+      <div class="stat"><span class="k">Athlete</span><span class="v">175 lb · trained</span></div>
+      <div class="stat"><span class="k">Bike engine</span><span class="v">~3.8 W/kg</span></div>
+      <div class="stat"><span class="k">Priority</span><span class="v">Power · Engine · Look</span></div>
+      <div class="stat"><span class="k">Cadence</span><span class="v">6 on / 1 off</span></div>
+      <div class="stat"><span class="k">Session</span><span class="v">~60 min</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">01</span><h2>Why it's built this way</h2></div>
+    <p class="sec-sub">The snatch and clean &amp; jerk are speed-and-skill lifts — they need a fresh nervous system and snappy legs, and they're the first thing a fatigued week steals from you. So the whole layout is arranged to protect the barbell, then fit the engine and the aesthetics into the space around it.</p>
+    <div class="logic">
+      <div class="cell"><h3>Protect the speed</h3><p>Olympic lifting lives on days 1 &amp; 3, right off rest, when your legs and CNS are freshest. Explosive power is trained fresh or not at all — you can't grind a fast lift into existence.</p></div>
+      <div class="cell"><h3>One hard ride, well spaced</h3><p>Your only intense bike session sits far from both lifting days. Hard intervals on tired legs, or heavy squats on ride-fatigued legs, is where the two goals start eating each other.</p></div>
+      <div class="cell"><h3>Keep most miles easy</h3><p>The bike is your engine and your recovery, so the bulk of it stays true Zone 2. High-volume junk intensity is the fastest way to blunt both your squat and your snatch.</p></div>
+      <div class="cell"><h3>Put the vanity up top</h3><p>Physique work is loaded onto the <em>upper</em> body — arms, delts, chest, back. The lifts already hammer your legs, traps and posterior chain, so this fills gaps instead of adding leg fatigue.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">02</span><h2>The training week</h2></div>
+    <p class="sec-sub">Two Olympic days built on squats, one upper-body strength/physique day, three rides (two easy, one hard), one true rest day. Move days to fit your calendar — just keep the two lifting days off the back of your hard ride, and both off the back of rest.</p>
+    <div class="legend">
+      <span class="dial d-pow">Power / Olympic</span>
+      <span class="dial d-str">Strength</span>
+      <span class="dial d-thr">Threshold</span>
+      <span class="dial d-easy">Easy · Zone 2</span>
+      <span class="dial d-rest">Recovery</span>
+    </div>
+
+    <div class="week">
+      <article class="day">
+        <div class="day-top"><span class="day-label">Mon</span><span class="dial d-pow">Clean &amp; Jerk</span></div>
+        <h3>Clean &amp; Jerk + Back Squat</h3>
+        <ul class="work">
+          <li>Clean &amp; jerk — <span class="m">build to a heavy single, then 4×(1+1) @ ~80%</span></li>
+          <li>Clean pull — <span class="m">3×3 @ ~95%</span></li>
+          <li>Back squat — <span class="m">4×4 @ ~83%</span>, full rest</li>
+          <li>Weighted plank / hanging leg raise — <span class="m">3 sets</span></li>
+        </ul>
+        <p class="note">Freshest day for the lift you're best at. Attack the C&amp;J here; stop a set the moment bar speed drops.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Tue</span><span class="dial d-easy">Zone 2</span></div>
+        <h3>Bike · Aerobic Base</h3>
+        <ul class="work">
+          <li>Your 20-mi circuit — <span class="m">easy, HR 65–75%</span></li>
+          <li>Conversational the whole way</li>
+          <li>Flushes the legs from Monday, builds base</li>
+        </ul>
+        <p class="note">If you can talk in full sentences, the pace is right.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Wed</span><span class="dial d-pow">Snatch Skill</span></div>
+        <h3>Snatch Skill + Front Squat</h3>
+        <ul class="work">
+          <li>Snatch drills — <span class="m">OH squat / snatch balance, 3×3 light</span></li>
+          <li>Power or hang snatch — <span class="m">5×2 moderate</span>, speed &amp; a clean catch</li>
+          <li>Front squat — <span class="m">4×3</span></li>
+          <li>Push press — <span class="m">3×5</span> (jerk power + shoulders)</li>
+        </ul>
+        <p class="note">Practice, not testing. The snatch improves from light, fast, frequent reps — never from grinding it heavy.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Thu</span><span class="dial d-str">Strength</span></div>
+        <h3>Upper Strength + Physique</h3>
+        <ul class="work">
+          <li>Weighted pull-ups — <span class="m">4×5</span></li>
+          <li>Incline DB press — <span class="m">3×10</span> (chest)</li>
+          <li>Chest-supported row — <span class="m">3×12</span> (back)</li>
+          <li>Lateral raise + face pull — <span class="m">3×15</span> (delts)</li>
+          <li>Curl + triceps superset — <span class="m">3×12</span> (the vanity)</li>
+        </ul>
+        <p class="note">Near-zero leg cost — keeps Friday's ride and Monday's snatch clean.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Fri</span><span class="dial d-thr">Threshold</span></div>
+        <h3>Bike · Engine Session</h3>
+        <ul class="work">
+          <li>The one hard ride — holds your top end without running</li>
+          <li><b>A:</b> <span class="m">4×8 min @ threshold</span>, 4 min easy between</li>
+          <li><b>B:</b> a hilly tempo ride, <span class="m">45–60 min steady-hard</span></li>
+        </ul>
+        <p class="note">Two full days before Monday's snatch — deliberate, so the legs recover their snap.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Sat</span><span class="dial d-easy">Zone 2</span></div>
+        <h3>Long Easy Bike</h3>
+        <ul class="work">
+          <li>The fun ride — <span class="m">60–90 min easy</span>, aerobic volume</li>
+          <li>Beat up from the week? Make it shorter or rest</li>
+        </ul>
+        <p class="note">Optional 15 min arm/shoulder pump after — cheap aesthetics, no real cost.</p>
+      </article>
+
+      <article class="day">
+        <div class="day-top"><span class="day-label">Sun</span><span class="dial d-rest">Rest</span></div>
+        <h3>Rest / Mobility</h3>
+        <ul class="work">
+          <li>Full day off, or an easy walk</li>
+          <li>Ankles, hips, thoracic, overhead — mobility feeds the lifts</li>
+          <li>Sleep. The adaptation happens here</li>
+        </ul>
+        <p class="note">Sets up fresh legs and CNS for Monday. Don't skip it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">03</span><h2>The barbell work, and how to run it</h2></div>
+    <p class="sec-sub">The clean &amp; jerk is your heavy power lift; the snatch rides along as skill work until it earns the right to be loaded. Pulls build a pull stronger than the lift, and the squats are the engine room underneath both. Percentages are of your best in that lift.</p>
+    <div class="twrap">
+      <table>
+        <thead>
+          <tr><th>Lift</th><th>Role</th><th>How to run it</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="st">Clean &amp; Jerk</td><td>Your heavy power lift + overhead strength</td><td><span class="lever">Where you push the weight.</span> Heavy single, then 4×(1+1) @ ~80%. Reset the jerk dip — it's a separate skill.</td></tr>
+          <tr><td class="st">Snatch <span style="color:var(--ink-3); font-weight:500;">(skill)</span></td><td>Trained as a skill you're building, not a max you test</td><td><span class="lever">Light, fast, frequent.</span> Power/hang snatch 5×2 at a weight you never miss. Chase positions and speed, not the number.</td></tr>
+          <tr><td class="st">Snatch / Clean Pulls</td><td>Builds a pull heavier than your lifts</td><td><span class="mono">3×3 @ 90–100%</span> of the matching lift. Finish tall, stay over the bar.</td></tr>
+          <tr><td class="st">Back Squat</td><td>The strength base under everything</td><td><span class="mono">4×4 @ ~83%.</span> This is what raises the ceiling on your Oly numbers.</td></tr>
+          <tr><td class="st">Front Squat</td><td>Clean-specific legs + upright torso</td><td><span class="mono">4×3.</span> Elbows high; carries straight into the clean recovery.</td></tr>
+          <tr><td class="st">Push Press / Jerk</td><td>Overhead power — and free delt work</td><td><span class="mono">3×5.</span> Drive with the legs; doubles as aesthetic shoulder volume.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>Getting better at the snatch:</strong> nearly everyone who's "bad at snatches" only ever tries them heavy and occasionally — which is exactly how you <em>don't</em> learn a skill lift. Flip it: light, fast, frequent, fresh. Four drills carry most of the progress — <b>overhead squat</b> (own the catch), <b>snatch balance</b> (confidence receiving the bar), <b>tall / high-hang snatch</b> (turnover speed), and simply stacking clean reps at a weight you never miss. Add load only when the positions hold on their own.</p>
+    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Or skip it.</strong> The snatch isn't mandatory for power — the clean &amp; jerk and power clean deliver nearly all of it. Say the word and I'll drop the snatch entirely and rebuild both days around the clean family.</p>
+    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Making it fit 60 minutes:</strong> the two lifting days are the tightest — keep warm-ups to ramp sets on the bar (no wandering), superset the squat with your core or push press to buy time, and if you're still against the clock, the pulls are the first thing to cut. The upper day and every ride slot into an hour with room to spare.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">04</span><h2>Emphasis blocks: without a race, you rotate the dial yourself</h2></div>
+    <p class="sec-sub">No competition means no forced peak — so you create your own progression by biasing the block toward power or toward the engine every 4–6 weeks, then flipping it. Nothing gets neglected; something just leads.</p>
+    <div class="cols">
+      <div class="panel">
+        <h3>Power-bias block</h3>
+        <ul>
+          <li>Push the Oly lifts and squats — add load or a set</li>
+          <li>Chase lift PRs while legs are protected</li>
+          <li>Demote Friday's ride to easy Zone 2</li>
+          <li>Physique work holds at maintenance</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Engine-bias block</h3>
+        <ul>
+          <li>Keep the lifts sharp but <b>light</b> (~80%, technical, no grinding)</li>
+          <li>Add a second harder ride or extend the long one</li>
+          <li>Push weekly bike volume and threshold work</li>
+          <li>Watch that W/kg climb</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>Either block:</strong> deload every 4th–5th week — cut volume ~40%, keep the lifts light and fast. The tell that you're overcooking the concurrency: your snatch feels slow <em>and</em> your legs are dead on the bike. When that shows up, pull the bike intensity back first (keep it Zone 2) before you touch the barbell.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">05</span><h2>Bike &amp; physique, handled honestly</h2></div>
+    <div class="cols">
+      <div class="panel">
+        <h3>Your bike, kept</h3>
+        <p>With no race pulling you toward running, the bike stays exactly what you like it to be — your main cardio, three rides a week. Two easy for base and recovery, one hard on Friday to keep the top end you've built (~3.8 W/kg) from fading.</p>
+        <p>The only discipline that matters: keep the easy days genuinely easy. That's what lets a hard ride and heavy squats coexist in the same week.</p>
+      </div>
+      <div class="panel">
+        <h3>Aesthetics without sabotage</h3>
+        <p>The "touch of vain" is already covered by Thursday plus the optional Saturday pump — deliberately <b>upper-body</b>, where it barely interferes with the lifting or the engine.</p>
+        <p>The Olympic lifts already build powerful legs, traps and a thick upper back for you. So physique work fills what they miss: arms, chest, lateral delts. Don't add quad hypertrophy — your legs are already buried in squats and pulls.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">06</span><h2>Fuel &amp; recovery</h2></div>
+    <div class="fuel">
+      <div class="f"><div class="fk">Protein</div><div class="fv"><b>~175 g/day</b> — roughly 1 g per lb. Anchors muscle and recovery across all this volume.</div></div>
+      <div class="f"><div class="fk">Calories</div><div class="fv">For a <b>touch of size</b>: maintenance or a small surplus. Cycling volume leans you out on its own — under-eating loses the muscle you're after.</div></div>
+      <div class="f"><div class="fk">Creatine</div><div class="fv"><b>5 g/day, daily.</b> The one supplement with real evidence for power, strength and fullness. Cheap, boring, works.</div></div>
+      <div class="f"><div class="fk">Sleep</div><div class="fv"><b>7–9 h.</b> The biggest lever for recovering from concurrent training — and for the CNS the fast lifts depend on.</div></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p><b>Assumptions baked in:</b> 6 training days/week at ~60 min each, no competition (general hybrid setup), gym access with a barbell, bumpers and room to drop the lifts, intermediate lifting experience. Change any of those — fewer days, no platform, newer to the classic lifts — and the week gets re-cut around it.</p>
+    <p style="margin-top:8px;">Bike engine (~3.8 W/kg) estimated from your solo Prospect Park ride at 86% max HR on a loaded touring bike. A well-founded estimate, not a lab test — a 20-minute all-out effort would firm it up and set your threshold intervals precisely.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
