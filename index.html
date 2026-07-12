@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Hybrid Block — Training Plan</title>
-<meta name="description" content="A weekly hybrid-athlete plan: clean & jerk for power, snatch as skill work, cycling for the engine, light physique work — one hour a day.">
+<meta name="description" content="A weekly hybrid-athlete plan: clean & jerk for power, snatch as skill work, cycling for the engine, plyos and mobility for athleticism, light physique work on top.">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%8F%8B%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <style>html,body{margin:0;padding:0;background:#F4F4F0;}</style>
@@ -27,6 +27,8 @@
     --pow-bg: #F3DCD6; --pow-fg: #B23A22;
     --str-bg: #DEE6EE; --str-fg: #2E4C6B;
     --rest-bg:#E7E7E4; --rest-fg:#63676E;
+    --ath-bg: #EAE4F2; --ath-fg: #5C4A87;
+    --mob-bg: #E1EEF0; --mob-fg: #2C6068;
     --mono: "SF Mono", "JetBrains Mono", ui-monospace, "Menlo", "Consolas", monospace;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   }
@@ -66,7 +68,7 @@
     text-wrap: balance;
     margin: 0 0 16px;
   }
-  .lede { font-size: clamp(1rem, 2.2vw, 1.18rem); color: var(--ink-2); max-width: 60ch; margin: 0; }
+  .lede { font-size: clamp(1rem, 2.2vw, 1.18rem); color: var(--ink-2); max-width: 62ch; margin: 0; }
   .lede b { color: var(--ink); font-weight: 650; }
 
   .stats {
@@ -89,6 +91,15 @@
   }
   .sec-sub { color: var(--ink-2); max-width: 66ch; margin: -6px 0 4px; }
 
+  /* ---------- callout ---------- */
+  .callout {
+    background: #FBEEE8; border: 1px solid #F0CDBE; border-left: 3px solid var(--accent);
+    border-radius: 4px; padding: 18px 20px; margin: 24px 0 4px;
+  }
+  .callout p { margin: 0; max-width: none; color: #3A2A22; font-size: 15px; line-height: 1.55; }
+  .callout p + p { margin-top: 8px; }
+  .callout b { color: var(--accent-d); }
+
   /* ---------- logic grid ---------- */
   .logic { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
   .logic .cell {
@@ -110,8 +121,12 @@
   .work { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
   .work li { font-size: 14.5px; line-height: 1.42; color: #2C2F35; padding-left: 15px; position: relative; }
   .work li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+  .work li.prime::before { background: var(--ath-fg); }
   .work li .m { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-  .note { margin-top: auto; padding-top: 12px; font-size: 12.5px; color: var(--ink-3); font-style: italic; }
+  .work li .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ath-fg); font-weight: 700; }
+  .addon { margin-top: 12px; padding-top: 11px; border-top: 1px dashed var(--line); font-size: 13px; line-height: 1.45; color: #2C2F35; }
+  .addon .ak { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-d); font-weight: 700; margin-bottom: 3px; }
+  .note { margin-top: 12px; padding-top: 0; font-size: 12.5px; color: var(--ink-3); font-style: italic; }
 
   /* dial pills */
   .dial { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 9px; border-radius: 2px; white-space: nowrap; }
@@ -120,6 +135,8 @@
   .d-pow  { background: var(--pow-bg);  color: var(--pow-fg); }
   .d-str  { background: var(--str-bg);  color: var(--str-fg); }
   .d-rest { background: var(--rest-bg); color: var(--rest-fg); }
+  .d-ath  { background: var(--ath-bg);  color: var(--ath-fg); }
+  .d-mob  { background: var(--mob-bg);  color: var(--mob-fg); }
 
   /* legend */
   .legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 20px; }
@@ -146,6 +163,7 @@
   .panel p:last-child { margin-bottom: 0; }
   .panel ul { margin: 0; padding-left: 18px; }
   .panel li { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 5px; }
+  .panel .ph { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ath-fg); font-weight: 700; }
 
   /* fuel strip */
   .fuel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--card); }
@@ -173,49 +191,60 @@
   <header class="mast">
     <p class="eyebrow">Hybrid Programming · Built for Mike</p>
     <h1>The Hybrid Block</h1>
-    <p class="lede">A week built on the <b>Olympic lifts</b> for raw power, your <b>bike</b> for the engine, and a <b>touch of physique</b> on top — none of them cannibalizing the others. The organizing rule: the barbell speed comes first, so everything else is arranged to keep your legs and nervous system fresh for it.</p>
+    <p class="lede">A week built on the <b>Olympic lifts</b> for power, your <b>bike</b> for the engine, <b>plyos and mobility</b> for the athleticism underneath them, and a <b>touch of physique</b> on top — none of them cannibalizing the others. The organizing rule: barbell speed comes first, so everything else is arranged to keep your legs and nervous system fresh for it.</p>
     <div class="stats">
-      <div class="stat"><span class="k">Athlete</span><span class="v">175 lb · trained</span></div>
+      <div class="stat"><span class="k">Athlete</span><span class="v">37 · 175 lb · 3 yr solid</span></div>
+      <div class="stat"><span class="k">Best lifts</span><span class="v">C&amp;J 185 · FSq 205 · Bench 100s</span></div>
       <div class="stat"><span class="k">Bike engine</span><span class="v">~3.8 W/kg</span></div>
       <div class="stat"><span class="k">Priority</span><span class="v">Power · Engine · Look</span></div>
-      <div class="stat"><span class="k">Cadence</span><span class="v">6 on / 1 off</span></div>
-      <div class="stat"><span class="k">Session</span><span class="v">~60 min</span></div>
+      <div class="stat"><span class="k">Cadence</span><span class="v">6 on / 1 off + long day</span></div>
+      <div class="stat"><span class="k">Session</span><span class="v">~60 min + add-on</span></div>
     </div>
   </header>
 
+  <div class="callout">
+    <p><b>The one thing your numbers reveal:</b> your front squat (205) is <em>heavier</em> than your best clean &amp; jerk (185), and you're pressing 100 lb dumbbells per hand. You are not weak anywhere the clean needs strength — your legs can already stand up with more than you can clean, and your shoulders can already press it overhead.</p>
+    <p><b>So your limiter is skill and position, not strength.</b> That's why chasing heavier singles with mediocre form is the slow road — it drills the flaw in. The fast 20–30 lb comes from technique, speed under the bar, and overhead/ankle/hip mobility. This whole block is now built around that: plyos and skill work when you're fresh, mobility as real training, and the barbell loaded only as fast as your positions hold.</p>
+  </div>
+
   <section>
     <div class="sec-head"><span class="sec-idx">01</span><h2>Why it's built this way</h2></div>
-    <p class="sec-sub">The snatch and clean &amp; jerk are speed-and-skill lifts — they need a fresh nervous system and snappy legs, and they're the first thing a fatigued week steals from you. So the whole layout is arranged to protect the barbell, then fit the engine and the aesthetics into the space around it.</p>
+    <p class="sec-sub">The snatch and clean &amp; jerk are speed-and-skill lifts — they need a fresh nervous system and snappy legs, and they're the first thing a fatigued week steals from you. So the whole layout protects the barbell and the explosive work first, then fits the engine and the aesthetics into the space around it.</p>
     <div class="logic">
-      <div class="cell"><h3>Protect the speed</h3><p>Olympic lifting lives on days 1 &amp; 3, right off rest, when your legs and CNS are freshest. Explosive power is trained fresh or not at all — you can't grind a fast lift into existence.</p></div>
+      <div class="cell"><h3>Skill is the limiter</h3><p>You can already squat and press more than your clean &amp; jerk needs. So the lifts are run for <em>quality</em> — perfect positions, fast under the bar — and load follows technique, not the other way around.</p></div>
+      <div class="cell"><h3>Explosive work goes first</h3><p>Plyos and the Olympic lifts live on days 1 &amp; 3, right off rest, when your legs and CNS are freshest. Power and jumps are trained fresh or not at all — you can't grind speed into existence.</p></div>
       <div class="cell"><h3>One hard ride, well spaced</h3><p>Your only intense bike session sits far from both lifting days. Hard intervals on tired legs, or heavy squats on ride-fatigued legs, is where the two goals start eating each other.</p></div>
-      <div class="cell"><h3>Keep most miles easy</h3><p>The bike is your engine and your recovery, so the bulk of it stays true Zone 2. High-volume junk intensity is the fastest way to blunt both your squat and your snatch.</p></div>
-      <div class="cell"><h3>Put the vanity up top</h3><p>Physique work is loaded onto the <em>upper</em> body — arms, delts, chest, back. The lifts already hammer your legs, traps and posterior chain, so this fills gaps instead of adding leg fatigue.</p></div>
+      <div class="cell"><h3>Mobility is training, not a warm-up</h3><p>Ankles, hips, thoracic and overhead get real, scheduled time — because those exact positions are what's capping your snatch and jerk. Better positions <em>are</em> more kilos.</p></div>
     </div>
   </section>
 
   <section>
     <div class="sec-head"><span class="sec-idx">02</span><h2>The training week</h2></div>
-    <p class="sec-sub">Two Olympic days built on squats, one upper-body strength/physique day, three rides (two easy, one hard), one true rest day. Move days to fit your calendar — just keep the two lifting days off the back of your hard ride, and both off the back of rest.</p>
+    <p class="sec-sub">Two Olympic days led by a plyo primer and built on squats, one upper strength/physique day, three rides (two easy, one hard), a long weekend ride, and an active recovery day. Each session has a ~60-min core plus a <b>15–30 min add-on</b> when you want the extra work. Move days to fit your calendar — just keep the two lifting days off the back of your hard ride, and both off the back of rest.</p>
     <div class="legend">
       <span class="dial d-pow">Power / Olympic</span>
+      <span class="dial d-ath">Plyo / Athletic</span>
       <span class="dial d-str">Strength</span>
       <span class="dial d-thr">Threshold</span>
       <span class="dial d-easy">Easy · Zone 2</span>
+      <span class="dial d-mob">Mobility</span>
       <span class="dial d-rest">Recovery</span>
     </div>
 
     <div class="week">
       <article class="day">
         <div class="day-top"><span class="day-label">Mon</span><span class="dial d-pow">Clean &amp; Jerk</span></div>
-        <h3>Clean &amp; Jerk + Back Squat</h3>
+        <h3>Plyo Primer + C&amp;J + Squat</h3>
         <ul class="work">
-          <li>Clean &amp; jerk — <span class="m">build to a heavy single, then 4×(1+1) @ ~80%</span></li>
+          <li class="prime"><span class="tag">Prime ·</span> Pogo hops + low box jumps — <span class="m">3×5, max height, full recovery</span></li>
+          <li>Clean &amp; jerk — <span class="m">build to a crisp single @ RPE 7–8, then 4×(1+1) @ ~80%</span></li>
           <li>Clean pull — <span class="m">3×3 @ ~95%</span></li>
-          <li>Back squat — <span class="m">4×4 @ ~83%</span>, full rest</li>
+          <li>Back squat — <span class="m">4×4 @ RPE 8</span>, full rest</li>
+          <li>Dips or push-ups + face pull — <span class="m">3 sets</span> (upper hit #1)</li>
           <li>Weighted plank / hanging leg raise — <span class="m">3 sets</span></li>
         </ul>
-        <p class="note">Freshest day for the lift you're best at. Attack the C&amp;J here; stop a set the moment bar speed drops.</p>
+        <p class="note">Stop the C&amp;J the instant a rep looks ugly — a fast clean single beats a heavy grind here.</p>
+        <div class="addon"><span class="ak">+15–30 min</span>Overhead + ankle mobility flow, or an easy spin to flush the legs.</div>
       </article>
 
       <article class="day">
@@ -227,18 +256,21 @@
           <li>Flushes the legs from Monday, builds base</li>
         </ul>
         <p class="note">If you can talk in full sentences, the pace is right.</p>
+        <div class="addon"><span class="ak">+15–30 min · Mobility</span>Full lower-body flow: ankles, hips, thoracic, overhead. This is your snatch unlocker — treat it as a real session, not a stretch.</div>
       </article>
 
       <article class="day">
-        <div class="day-top"><span class="day-label">Wed</span><span class="dial d-pow">Snatch Skill</span></div>
-        <h3>Snatch Skill + Front Squat</h3>
+        <div class="day-top"><span class="day-label">Wed</span><span class="dial d-ath">Athletic</span></div>
+        <h3>Athletic Primer + Snatch Skill</h3>
         <ul class="work">
+          <li class="prime"><span class="tag">Prime ·</span> Broad jumps + bounding + med-ball throws — <span class="m">quality reps, not for burn</span></li>
           <li>Snatch drills — <span class="m">OH squat / snatch balance, 3×3 light</span></li>
           <li>Power or hang snatch — <span class="m">5×2 moderate</span>, speed &amp; a clean catch</li>
-          <li>Front squat — <span class="m">4×3</span></li>
-          <li>Push press — <span class="m">3×5</span> (jerk power + shoulders)</li>
+          <li>Front squat — <span class="m">4×3 @ RPE 7</span> (moderate — 48h off Monday)</li>
+          <li>Chin-ups or row — <span class="m">3×8</span> (upper hit #2)</li>
         </ul>
         <p class="note">Practice, not testing. The snatch improves from light, fast, frequent reps — never from grinding it heavy.</p>
+        <div class="addon"><span class="ak">+15–30 min</span>Overhead/thoracic mobility, or an easy spin. Skip anything explosive — you already spent that today.</div>
       </article>
 
       <article class="day">
@@ -246,12 +278,14 @@
         <h3>Upper Strength + Physique</h3>
         <ul class="work">
           <li>Weighted pull-ups — <span class="m">4×5</span></li>
-          <li>Incline DB press — <span class="m">3×10</span> (chest)</li>
+          <li>Incline DB press — <span class="m">3×8–10</span> (you're strong here — load it)</li>
           <li>Chest-supported row — <span class="m">3×12</span> (back)</li>
+          <li>Nordic curl or RDL — <span class="m">3×6–8</span> (hamstrings — health &amp; balance)</li>
           <li>Lateral raise + face pull — <span class="m">3×15</span> (delts)</li>
           <li>Curl + triceps superset — <span class="m">3×12</span> (the vanity)</li>
         </ul>
-        <p class="note">Near-zero leg cost — keeps Friday's ride and Monday's snatch clean.</p>
+        <p class="note">Near-zero leg cost — keeps Friday's ride and next week's lifts clean. The Nordic/RDL is the one deliberate hamstring dose.</p>
+        <div class="addon"><span class="ak">+15–30 min</span>Easy spin for aerobic volume, or a little extra arm/delt work if the look is your current focus.</div>
       </article>
 
       <article class="day">
@@ -262,65 +296,132 @@
           <li><b>A:</b> <span class="m">4×8 min @ threshold</span>, 4 min easy between</li>
           <li><b>B:</b> a hilly tempo ride, <span class="m">45–60 min steady-hard</span></li>
         </ul>
-        <p class="note">Two full days before Monday's snatch — deliberate, so the legs recover their snap.</p>
+        <p class="note">Two full days before Monday's lifts — deliberate, so the legs get their snap back.</p>
+        <div class="addon"><span class="ak">+15–30 min · Bodyweight</span>Loaded carries, hollow holds, hanging work, crawls. Core &amp; grip that don't fight tomorrow's ride.</div>
       </article>
 
       <article class="day">
-        <div class="day-top"><span class="day-label">Sat</span><span class="dial d-easy">Zone 2</span></div>
-        <h3>Long Easy Bike</h3>
+        <div class="day-top"><span class="day-label">Sat</span><span class="dial d-easy">Long Ride</span></div>
+        <h3>The Weekend Long Day</h3>
         <ul class="work">
-          <li>The fun ride — <span class="m">60–90 min easy</span>, aerobic volume</li>
-          <li>Beat up from the week? Make it shorter or rest</li>
+          <li>Long, genuinely easy ride — <span class="m">2–4 hr, all aerobic</span></li>
+          <li>Your single biggest engine lever, at almost no recovery cost <em>if it stays easy</em></li>
+          <li>Power block? Keep it ~90 min. Engine block? Stretch it out</li>
         </ul>
-        <p class="note">Optional 15 min arm/shoulder pump after — cheap aesthetics, no real cost.</p>
+        <p class="note">Fuel it — carbs on the bike past ~90 min. Let it creep into tempo and it starts stealing Monday's speed.</p>
+        <div class="addon"><span class="ak">+15 min</span>Optional arm/shoulder pump after. Cheap aesthetics, no real cost.</div>
       </article>
 
       <article class="day">
-        <div class="day-top"><span class="day-label">Sun</span><span class="dial d-rest">Rest</span></div>
-        <h3>Rest / Mobility</h3>
+        <div class="day-top"><span class="day-label">Sun</span><span class="dial d-rest">Recovery</span></div>
+        <h3>Move &amp; Mobility</h3>
         <ul class="work">
-          <li>Full day off, or an easy walk</li>
-          <li>Ankles, hips, thoracic, overhead — mobility feeds the lifts</li>
+          <li>Full off day, or easy play — <span class="m">walk, mobility flow</span></li>
+          <li>Optional bodyweight athletics — <span class="m">crawls, pistols, jumps for fun, hollow/L-sit holds</span></li>
+          <li>Deep mobility: ankles, hips, thoracic, overhead</li>
           <li>Sleep. The adaptation happens here</li>
         </ul>
-        <p class="note">Sets up fresh legs and CNS for Monday. Don't skip it.</p>
+        <p class="note">Keep it genuinely light — this is what sets up fresh legs and CNS for Monday.</p>
       </article>
     </div>
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-idx">03</span><h2>The barbell work, and how to run it</h2></div>
-    <p class="sec-sub">The clean &amp; jerk is your heavy power lift; the snatch rides along as skill work until it earns the right to be loaded. Pulls build a pull stronger than the lift, and the squats are the engine room underneath both. Percentages are of your best in that lift.</p>
+    <div class="sec-head"><span class="sec-idx">03</span><h2>The athletic layer: plyos, mobility, bodyweight</h2></div>
+    <p class="sec-sub">This is the part that pays off fastest for you, because it attacks your actual limiter. Speed and positions, not more load. Here's how each piece is dosed so it helps the lifts instead of just adding fatigue.</p>
+    <div class="cols">
+      <div class="panel">
+        <p class="ph">Plyometrics — quality, never conditioning</p>
+        <h3>Jump primers</h3>
+        <p>Plyos go <b>first, fresh, and in low volume</b> — they wake up your rate of force development, the exact quality the clean and jerk live on. The rule that keeps them useful: every rep is max-intent with full recovery. The moment they turn into a sweaty burn circuit, they stop building power and start eating it.</p>
+        <ul>
+          <li><b>Mon (vertical):</b> pogo hops, then low box jumps — step down, reset, jump again</li>
+          <li><b>Wed (horizontal):</b> broad jumps, short bounds, med-ball slams/throws</li>
+          <li><b>Volume:</b> ~15–20 hard contacts total, then move on</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <p class="ph">Mobility — aimed at your positions</p>
+        <h3>The four that gate the lifts</h3>
+        <p>General stretching is a waste of your time. These four are the ones directly capping your snatch, jerk and front rack — earn them and kilos follow with no new strength.</p>
+        <ul>
+          <li><b>Ankles:</b> deep dorsiflexion → a real bottom position and upright squat</li>
+          <li><b>Hips:</b> squat-to-stand, 90/90 → depth without the back rounding</li>
+          <li><b>Thoracic + overhead:</b> the bar stacked over the shoulder, not in front</li>
+          <li><b>Front rack/wrist:</b> a clean catch that doesn't dump the elbows</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <p class="ph">Bodyweight &amp; athletic actions</p>
+        <h3>The connective tissue</h3>
+        <p>Built into Friday's add-on and Sunday's play, so it never competes with the barbell. Keeps you springy, well-braced and athletic — not just strong in a straight line.</p>
+        <ul>
+          <li><b>Carries &amp; hangs:</b> farmer carries, dead hangs — grip, traps, shoulder health</li>
+          <li><b>Core control:</b> hollow holds, L-sits, hanging leg raises</li>
+          <li><b>Locomotion:</b> bear/lateral crawls, skips, A-marches</li>
+          <li><b>Single-leg:</b> pistols, step-ups — balance the bilateral squatting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">04</span><h2>The barbell work, and how to run it</h2></div>
+    <p class="sec-sub">The clean &amp; jerk is your power lift, run for clean reps rather than max grinds; the snatch rides along as skill work until it earns the right to be loaded. Pulls build a pull stronger than the lift, and the squats already out-muscle what the clean needs — so they hold and support, they aren't the thing you chase. Percentages are of your best in that lift.</p>
     <div class="twrap">
       <table>
         <thead>
           <tr><th>Lift</th><th>Role</th><th>How to run it</th></tr>
         </thead>
         <tbody>
-          <tr><td class="st">Clean &amp; Jerk</td><td>Your heavy power lift + overhead strength</td><td><span class="lever">Where you push the weight.</span> Heavy single, then 4×(1+1) @ ~80%. Reset the jerk dip — it's a separate skill.</td></tr>
-          <tr><td class="st">Snatch <span style="color:var(--ink-3); font-weight:500;">(skill)</span></td><td>Trained as a skill you're building, not a max you test</td><td><span class="lever">Light, fast, frequent.</span> Power/hang snatch 5×2 at a weight you never miss. Chase positions and speed, not the number.</td></tr>
+          <tr><td class="st">Clean &amp; Jerk</td><td>Your power lift + overhead strength</td><td><span class="lever">Where you push — via speed, not grind.</span> Build to a single at <span class="mono">RPE 7–8</span> where the rep still looks perfect, then 4×(1+1) @ ~80%. Reset the jerk dip; it's a separate skill.</td></tr>
+          <tr><td class="st">Snatch <span style="color:var(--ink-3); font-weight:500;">(skill)</span></td><td>A skill you're building, not a max you test</td><td><span class="lever">Light, fast, frequent.</span> Power/hang snatch 5×2 at a weight you never miss. Chase positions and speed, not the number.</td></tr>
           <tr><td class="st">Snatch / Clean Pulls</td><td>Builds a pull heavier than your lifts</td><td><span class="mono">3×3 @ 90–100%</span> of the matching lift. Finish tall, stay over the bar.</td></tr>
-          <tr><td class="st">Back Squat</td><td>The strength base under everything</td><td><span class="mono">4×4 @ ~83%.</span> This is what raises the ceiling on your Oly numbers.</td></tr>
-          <tr><td class="st">Front Squat</td><td>Clean-specific legs + upright torso</td><td><span class="mono">4×3.</span> Elbows high; carries straight into the clean recovery.</td></tr>
+          <tr><td class="st">Back Squat</td><td>Strength base — already ahead of the clean</td><td><span class="mono">4×4 @ RPE 8.</span> Keep it strong, but it's not the bottleneck. Add load only when top sets stay at RPE 7.</td></tr>
+          <tr><td class="st">Front Squat</td><td>Clean-specific legs + upright torso</td><td><span class="mono">4×3 @ RPE 7.</span> Elbows high; it feeds the clean recovery and your rack mobility.</td></tr>
           <tr><td class="st">Push Press / Jerk</td><td>Overhead power — and free delt work</td><td><span class="mono">3×5.</span> Drive with the legs; doubles as aesthetic shoulder volume.</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>Getting better at the snatch:</strong> nearly everyone who's "bad at snatches" only ever tries them heavy and occasionally — which is exactly how you <em>don't</em> learn a skill lift. Flip it: light, fast, frequent, fresh. Four drills carry most of the progress — <b>overhead squat</b> (own the catch), <b>snatch balance</b> (confidence receiving the bar), <b>tall / high-hang snatch</b> (turnover speed), and simply stacking clean reps at a weight you never miss. Add load only when the positions hold on their own.</p>
-    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Or skip it.</strong> The snatch isn't mandatory for power — the clean &amp; jerk and power clean deliver nearly all of it. Say the word and I'll drop the snatch entirely and rebuild both days around the clean family.</p>
-    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Making it fit 60 minutes:</strong> the two lifting days are the tightest — keep warm-ups to ramp sets on the bar (no wandering), superset the squat with your core or push press to buy time, and if you're still against the clock, the pulls are the first thing to cut. The upper day and every ride slot into an hour with room to spare.</p>
+    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>Reading RPE:</strong> RPE 8 means "two clean reps left in the tank." For you the hard rule is <em>form caps the set before fatigue does</em> — if a rep degrades, that set is over even if it felt light. You have the strength; you're buying the motor pattern.</p>
+    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Getting better at the snatch:</strong> nearly everyone who's "bad at snatches" only ever tries them heavy and occasionally — which is exactly how you <em>don't</em> learn a skill lift. Flip it: light, fast, frequent, fresh. Four drills carry most of the progress — <b>overhead squat</b> (own the catch), <b>snatch balance</b> (confidence receiving the bar), <b>tall / high-hang snatch</b> (turnover speed), and simply stacking clean reps at a weight you never miss. Add load only when the positions hold on their own.</p>
+    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Film it.</strong> With form as your limiter, a phone on a tripod is the highest-value tool you have. Record one heavy-ish clean and one snatch each week, from the side. You'll catch the early elbow bend or the bar swinging out long before you feel it — and you can send them to me for a read.</p>
+    <p style="margin-top:12px; font-size:14.5px; color:var(--ink-2);"><strong>Making it fit 60 minutes:</strong> the two lifting days are the tightest — keep the plyo primer short, warm up with ramp sets on the bar (no wandering), superset the squat with your upper hit to buy time, and if you're still against the clock, the pulls are the first thing to cut. The upper day and every ride slot into an hour with room to spare.</p>
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-idx">04</span><h2>Emphasis blocks: without a race, you rotate the dial yourself</h2></div>
-    <p class="sec-sub">No competition means no forced peak — so you create your own progression by biasing the block toward power or toward the engine every 4–6 weeks, then flipping it. Nothing gets neglected; something just leads.</p>
+    <div class="sec-head"><span class="sec-idx">05</span><h2>Adding time: the daily bump and the long day</h2></div>
+    <p class="sec-sub">You've got appetite for more, so here's where it goes — and, just as important, where it doesn't. The trap with concurrent training is dumping extra time into <em>more intensity</em>; that's precisely where the two goals start eating each other. Extra time buys volume at the easy end and quality at the skill end. Never a second hard thing.</p>
+    <div class="cols">
+      <div class="panel">
+        <h3>The daily +15–30 min</h3>
+        <p>Rotate it by what the day can absorb without cost:</p>
+        <ul>
+          <li><b>Lifting days:</b> mobility for your positions, or an easy spin</li>
+          <li><b>Ride days:</b> mobility, or bodyweight core &amp; carries</li>
+          <li><b>Upper day:</b> easy aerobic volume, or extra arm/delt work</li>
+        </ul>
+        <p>The two highest-value fillers overall: <b>mobility</b> (unlocks kilos) and <b>easy Zone 2</b> (builds the engine almost for free). Both are near-invisible to recovery.</p>
+      </div>
+      <div class="panel">
+        <h3>The weekend long day</h3>
+        <p>Saturday becomes a true long ride — <b>2 to 4 hours, strictly aerobic</b>. This is the single best thing you can add for the engine, because low-intensity volume barely competes with lifting for recovery. Fatigue on the bike comes from <em>intensity</em>, not duration at an easy pace.</p>
+        <p>One discipline: it has to stay easy. Fuel it past 90 minutes. The day it drifts into tempo is the day it starts costing you Monday's barbell speed.</p>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>The honest limit:</strong> power, engine, and look are three masters, and at 37 recovery is the real budget. More easy volume and more skill/mobility, yes — always. A second hard ride or a second heavy day, only inside a block that's deliberately biasing that way (below). If sleep, resting heart rate, or bar speed starts sliding, the added time is the first thing to trim, not the core week.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-idx">06</span><h2>Emphasis blocks &amp; keeping score</h2></div>
+    <p class="sec-sub">No competition means no forced peak — so you create your own progression by biasing the block toward power or toward the engine every 4–6 weeks, then flipping it. Nothing gets neglected; something just leads. And every block ends on a test, so you actually know if it worked.</p>
     <div class="cols">
       <div class="panel">
         <h3>Power-bias block</h3>
         <ul>
-          <li>Push the Oly lifts and squats — add load or a set</li>
-          <li>Chase lift PRs while legs are protected</li>
-          <li>Demote Friday's ride to easy Zone 2</li>
+          <li>Push the Oly lifts and squats — add load or a set as form holds</li>
+          <li>Keep the plyo primers sharp; chase lift quality while legs are protected</li>
+          <li>Demote Friday's ride to easy Zone 2, keep Saturday ~90 min</li>
           <li>Physique work holds at maintenance</li>
         </ul>
       </div>
@@ -328,44 +429,48 @@
         <h3>Engine-bias block</h3>
         <ul>
           <li>Keep the lifts sharp but <b>light</b> (~80%, technical, no grinding)</li>
-          <li>Add a second harder ride or extend the long one</li>
+          <li>Add a second harder ride or stretch the Saturday long one</li>
           <li>Push weekly bike volume and threshold work</li>
           <li>Watch that W/kg climb</li>
         </ul>
       </div>
     </div>
-    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>Either block:</strong> deload every 4th–5th week — cut volume ~40%, keep the lifts light and fast. The tell that you're overcooking the concurrency: your snatch feels slow <em>and</em> your legs are dead on the bike. When that shows up, pull the bike intensity back first (keep it Zone 2) before you touch the barbell.</p>
+    <div class="callout" style="margin-top:20px;">
+      <p><b>Deload + test, every 4th–5th week.</b> Cut volume ~40% and keep the lifts light and fast. Then, on a fresh day, log the four numbers that tell you the whole story:</p>
+      <p><b>1.</b> A crisp clean &amp; jerk single (form intact) &nbsp;·&nbsp; <b>2.</b> Front squat top triple &nbsp;·&nbsp; <b>3.</b> A 20-min bike test → real FTP &amp; W/kg &nbsp;·&nbsp; <b>4.</b> A quick film check on snatch position vs. last time.</p>
+    </div>
+    <p style="margin-top:16px; font-size:14.5px; color:var(--ink-2);"><strong>The overcooking tell:</strong> your snatch feels slow <em>and</em> your legs are dead on the bike. When that shows up, pull the bike intensity back first (keep it Zone 2) before you touch the barbell. At 37 you'll feel the concurrency bite before a 25-year-old would — respect it and the deloads aren't optional.</p>
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-idx">05</span><h2>Bike &amp; physique, handled honestly</h2></div>
+    <div class="sec-head"><span class="sec-idx">07</span><h2>Bike &amp; physique, handled honestly</h2></div>
     <div class="cols">
       <div class="panel">
         <h3>Your bike, kept</h3>
-        <p>With no race pulling you toward running, the bike stays exactly what you like it to be — your main cardio, three rides a week. Two easy for base and recovery, one hard on Friday to keep the top end you've built (~3.8 W/kg) from fading.</p>
+        <p>With no race pulling you toward running, the bike stays exactly what you like it to be — your main cardio. Two easy rides for base and recovery, one hard Friday to keep the top end you've built (~3.8 W/kg) from fading, and the new long Saturday to grow the base underneath it.</p>
         <p>The only discipline that matters: keep the easy days genuinely easy. That's what lets a hard ride and heavy squats coexist in the same week.</p>
       </div>
       <div class="panel">
         <h3>Aesthetics without sabotage</h3>
-        <p>The "touch of vain" is already covered by Thursday plus the optional Saturday pump — deliberately <b>upper-body</b>, where it barely interferes with the lifting or the engine.</p>
-        <p>The Olympic lifts already build powerful legs, traps and a thick upper back for you. So physique work fills what they miss: arms, chest, lateral delts. Don't add quad hypertrophy — your legs are already buried in squats and pulls.</p>
+        <p>Upper body now gets <b>three touches a week</b> — a superset Monday, one Wednesday, and the full Thursday session — which is what actually drives the "look," since a muscle grows on frequency, not one weekly blast.</p>
+        <p>The Olympic lifts already build powerful legs, traps and a thick upper back. So physique work fills what they miss: chest, arms, lateral delts, plus the one deliberate hamstring dose. Don't add quad hypertrophy — your legs are already buried in squats and pulls.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-idx">06</span><h2>Fuel &amp; recovery</h2></div>
+    <div class="sec-head"><span class="sec-idx">08</span><h2>Fuel &amp; recovery</h2></div>
     <div class="fuel">
       <div class="f"><div class="fk">Protein</div><div class="fv"><b>~175 g/day</b> — roughly 1 g per lb. Anchors muscle and recovery across all this volume.</div></div>
       <div class="f"><div class="fk">Calories</div><div class="fv">For a <b>touch of size</b>: maintenance or a small surplus. Cycling volume leans you out on its own — under-eating loses the muscle you're after.</div></div>
       <div class="f"><div class="fk">Creatine</div><div class="fv"><b>5 g/day, daily.</b> The one supplement with real evidence for power, strength and fullness. Cheap, boring, works.</div></div>
-      <div class="f"><div class="fk">Sleep</div><div class="fv"><b>7–9 h.</b> The biggest lever for recovering from concurrent training — and for the CNS the fast lifts depend on.</div></div>
+      <div class="f"><div class="fk">Sleep</div><div class="fv"><b>7–9 h.</b> The biggest lever for recovering from concurrent training — and, at 37, for the CNS the fast lifts depend on.</div></div>
     </div>
   </section>
 
   <footer class="foot">
-    <p><b>Assumptions baked in:</b> 6 training days/week at ~60 min each, no competition (general hybrid setup), gym access with a barbell, bumpers and room to drop the lifts, intermediate lifting experience. Change any of those — fewer days, no platform, newer to the classic lifts — and the week gets re-cut around it.</p>
-    <p style="margin-top:8px;">Bike engine (~3.8 W/kg) estimated from your solo Prospect Park ride at 86% max HR on a loaded touring bike. A well-founded estimate, not a lab test — a 20-minute all-out effort would firm it up and set your threshold intervals precisely.</p>
+    <p><b>Built from your numbers:</b> 37, 175 lb, ~3 years of consistent hard training. Best clean &amp; jerk 185 (form is the honest limiter), front squat 205, dumbbell bench 100/hand — which is exactly why this block leans on skill, speed and mobility over more load. 6 training days plus a long weekend ride, ~60 min cores with optional 15–30 min add-ons, gym access with a barbell, bumpers and room to drop the lifts.</p>
+    <p style="margin-top:8px;">Bike engine (~3.8 W/kg) estimated from your solo Prospect Park ride at 86% max HR on a loaded touring bike. A well-founded estimate, not a lab test — the 20-minute test in the deload week firms it up and sets your threshold intervals precisely. Hook up your Garmin data and every zone here stops being a guess.</p>
   </footer>
 
 </div>
